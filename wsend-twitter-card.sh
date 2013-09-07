@@ -17,7 +17,7 @@
 #
 #
 
-image=$1
+image="$1"
 extension="${image##*.}"
 filename="${image%.*}"
 if [ "$extension" == "png" ] || [ "$extension" == "jpg" ]; then
@@ -28,40 +28,42 @@ if [ "$extension" == "png" ] || [ "$extension" == "jpg" ]; then
     fileToSendSize=$(stat -c%s "$image")
   fi
   if [ $fileToSendSize -lt 999999 ]; then
-    mkdir $filename
+    mkdir "$filename"
     imageURL=`~/.wsend/wsend $image`
-    echo '<!DOCTYPE html>' > $filename/index.html
-    echo '<html>' >> $filename/index.html
-    echo '<meta charset="utf-8">' >> $filename/index.html
-    echo '<link rel="icon" href="https://wsend.net/img/favicon.png">' >> $filename/index.html
-    echo '<title>wsend</title>' >> $filename/index.html
-    echo '<style>' >> $filename/index.html
-    echo 'img {' >> $filename/index.html
-    echo 'position: absolute;' >> $filename/index.html
-    echo 'height: 100%;' >> $filename/index.html
-    echo 'top: 0px;' >> $filename/index.html
-    echo 'left: 0px;' >> $filename/index.html
-    echo '}' >> $filename/index.html
-    echo '</style>' >> $filename/index.html
-    echo '</head>' >> $filename/index.html
-    echo '<body>' >> $filename/index.html
-    echo '<meta name="twitter:card" content="photo">' >> $filename/index.html
-    echo '<meta name="twitter:site" content="@wsendnet">' >> $filename/index.html
-    echo '<meta name="twitter:creator" content="@wsendnet">' >> $filename/index.html
-    echo '<meta name="twitter:title" content="wsend">' >> $filename/index.html
-    echo "<meta name='twitter:image' content='$imageURL'>" >> $filename/index.html
-    echo '<meta name="twitter:image:width" content="610">' >> $filename/index.html
-    echo '<meta name="twitter:image:height" content="610">' >> $filename/index.html
-    echo "<a href='$imageURL'>" >> $filename/index.html
-    echo "<img src='$imageURL' />" >> $filename/index.html
-    echo '</a>' >> $filename/index.html
-    echo '</body>' >> $filename/index.html
-    echo '</html>' >> $filename/index.html
-    twitterCardURL=`~/.wsend/wsend $filename/index.html`
+    echo '<!DOCTYPE html>' > "$filename/index.html"
+    echo '<html>' >> "$filename/index.html"
+    echo '<meta charset="utf-8">' >> "$filename/index.html"
+    echo '<link rel="icon" href="https://wsend.net/img/favicon.png">' >> "$filename/index.html"
+    echo '<title>wsend</title>' >> "$filename/index.html"
+    echo '<style>' >> "$filename/index.html"
+    echo 'img {' >> "$filename/index.html"
+    echo 'position: absolute;' >> "$filename/index.html"
+    echo 'height: 100%;' >> "$filename/index.html"
+    echo 'top: 0px;' >> "$filename/index.html"
+    echo 'left: 0px;' >> "$filename/index.html"
+    echo '}' >> "$filename/index.html"
+    echo '</style>' >> "$filename/index.html"
+    echo '</head>' >> "$filename/index.html"
+    echo '<body>' >> "$filename/index.html"
+    echo '<meta name="twitter:card" content="photo">' >> "$filename/index.html"
+    echo '<meta name="twitter:site" content="@wsendnet">' >> "$filename/index.html"
+    echo '<meta name="twitter:creator" content="@wsendnet">' >> "$filename/index.html"
+    echo '<meta name="twitter:title" content="wsend">' >> "$filename/index.html"
+    echo "<meta name='twitter:image' content='$imageURL'>" >> "$filename/index.html"
+    echo '<meta name="twitter:image:width" content="610">' >> "$filename/index.html"
+    echo '<meta name="twitter:image:height" content="610">' >> "$filename/index.html"
+    echo "<a href='$imageURL'>" >> "$filename/index.html"
+    echo "<img src='$imageURL' />" >> "$filename/index.html"
+    echo '</a>' >> "$filename/index.html"
+    echo '</body>' >> "$filename/index.html"
+    echo '</html>' >> "$filename/index.html"
+    twitterCardURL=`~/.wsend/wsend "$filename/index.html"`
     echo "successfully uploaded at:"
     echo ""
     echo $twitterCardURL
     echo ""
+    rm "$filename/index.html"
+    rmdir "$filename"
   else
     echo "file size too large, must be under 1MB"
   fi
