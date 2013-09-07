@@ -16,7 +16,7 @@ Share a Twitter Card from the command line
 
 # Dependencies
     
-    [wsend](https://github.com/abemassry/wsend)
+  [wsend](https://github.com/abemassry/wsend)
 
 Works with png or jpg files.
 
