@@ -6,7 +6,7 @@ Share a Twitter Card from the command line
 
      git clone https://github.com/abemassry/wsend-twitter-card.git
      cd wsend-twitter-card/
-     alias wsend-twitter-card="$PWD/wsend-twtter-card.sh"
+     alias wsend-twitter-card="$PWD/wsend-twitter-card.sh"
 
 # Usage
 
