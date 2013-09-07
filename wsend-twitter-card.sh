@@ -17,7 +17,8 @@
 #
 #
 
-image="$1"
+commandLineImage="$1"
+image=${commandLineImage// /_}
 extension="${image##*.}"
 filename="${image%.*}"
 if [ "$extension" == "png" ] || [ "$extension" == "jpg" ]; then
