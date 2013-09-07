@@ -18,6 +18,7 @@ Share a Twitter Card from the command line
     
   [wsend](https://github.com/abemassry/wsend)
 
+# Info
 Works with png or jpg files.
 
 Tweet the link such as https://wsend.net/9455e9fee69017b22045b1e24542fcd6 and it shows up as a twitter card.
