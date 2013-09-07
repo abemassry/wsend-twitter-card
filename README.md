@@ -12,7 +12,7 @@ Share a Twitter Card from the command line
 
    **Usage:**
    
-     wsend-twitter-card.sh <image.jpg>
+     wsend-twitter-card <image.jpg>
 
 # Dependencies
     
