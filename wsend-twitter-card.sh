@@ -20,8 +20,8 @@
 userPic="$1"
 dirname="wsend_twitter_card_temp_dir"
 mkdir "$dirname"
-commandLineImage=${userPic// /_}
-cp $userPic $dirname/$commandLineImage
+commandLineImage="${userPic// /_}"
+cp "$userPic" "$dirname/$commandLineImage"
 image="$dirname/$commandLineImage"
 extension="${image##*.}"
 filename="${image%.*}"
